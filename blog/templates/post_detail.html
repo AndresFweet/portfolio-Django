@@ -1,0 +1,25 @@
+{% extends 'layaout.html' %}
+
+{% block content %}
+
+<div class="container py-5 text-white bg-dark">
+    <div class="text-center mb-4">
+        <h1 class="display-4 fw-bold">{{ post.title }}</h1>
+        <h2 class="text-muted h5">{{ post.date|date:'F jS Y' }}</h2>
+    </div>
+
+    <div class="text-center mb-4">
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid rounded shadow">
+    </div>
+
+    <div class="content my-4">
+        <p class="lead">{{ post.description|safe }}</p>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="/" class="btn btn-outline-light btn-lg">Regresar al inicio</a>
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,77 @@
+{% extends 'layaout.html' %} {% block content %} {% load static %}
+
+<header
+  class="row py-5 text-white"
+  style="background: linear-gradient(135deg, #0d1117, #161b22)"
+>
+  <div class="col-md-3 d-flex justify-content-center align-items-center">
+    <img
+      src="{% static 'profile.jpeg' %}"
+      alt="Profile Picture"
+      class="img-fluid rounded-circle shadow-lg animate__animated animate__fadeInLeft"
+      style="width: 150px; height: 150px; object-fit: cover"
+    />
+  </div>
+  <div
+    class="col-md-9 d-flex flex-column justify-content-center animate__animated animate__fadeInRight"
+  >
+    <h1
+      class="fw-bold mb-2"
+      style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2"
+    >
+      Soy <strong>Andrés Pastrana</strong>
+    </h1>
+    <h3
+      class="text-primary fw-semibold mb-3"
+      style="font-size: clamp(1rem, 3vw, 1.8rem)"
+    >
+      Desarrollador WEB Fullstack
+    </h3>
+    <p class="lead mb-4" style="line-height: 1.6">
+      Desarrollador web fullstack con experiencia en tecnologías como React, Node.js y PostgreSQL. Especializado en crear aplicaciones escalables, seguras y centradas en el usuario, integrando diseño intuitivo y desarrollo eficiente. Comprometido con soluciones digitales de alta calidad y adaptadas a cada proyecto.
+    </p>
+    <a
+      href="{% static 'curriculum.pdf' %}"
+      class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm"
+      style="transition: transform 0.3s ease, box-shadow 0.3s ease"
+      onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0px 4px 12px rgba(0, 123, 255, 0.5)';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='';"
+      target="_blank"
+    >
+      Descargar CV
+    </a>
+  </div>
+</header>
+
+<h3 class="pt-5 text-white fw-bold">Mis Proyectos</h3>
+<p class="text-white">Aquí presento algunos de mis proyectos, reflejo de mi experiencia como desarrollador web fullstack. Cada uno demuestra mi habilidad para crear soluciones funcionales, escalables y centradas en el usuario con tecnologías modernas.</p>
+
+<div class="row my-4 text-center">
+    {% for project in projects %}
+<div class="col-md-4 mb-4 d-flex align-items-stretch">
+  <div class="card bg-dark text-white shadow-lg border-0 card-project h-100">
+    <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.tittle }}" style="object-fit: cover; height: 200px;">
+    
+    <div class="card-body d-flex flex-column">
+      <h2 class="card-title fs-4 fw-bold mb-3">{{ project.tittle }}</h2>
+      <p class="card-text flex-grow-1" style="line-height: 1.6;">{{ project.description }}</p>
+
+      {% if project.url %}
+      <a href="{{ project.url }}" 
+         class="btn btn-outline-light mt-3 rounded-pill btn-sm align-self-start" 
+         target="__blank" 
+         rel="noreferrer" 
+         style="transition: transform 0.3s ease, box-shadow 0.3s ease;"
+         onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0px 4px 12px rgba(255, 255, 255, 0.5)';"
+         onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='';">
+         Ver Repositorio
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+</div>
+
+{% endblock %}
